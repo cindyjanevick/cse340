@@ -4,3 +4,170 @@
 *:after {
   box-sizing: border-box;
 }
+/* ========== Global Styles (Mobile First) ========== */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  color: #222;
+}
+
+/* ========== Header ========== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border-bottom: 3px solid #0056b3;
+}
+
+.siteName a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+#tools a {
+  font-size: 0.9rem;
+  color: white;
+}
+
+/* ========== Navigation ========== */
+nav {
+  background-color: #333;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+nav li {
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+}
+
+/* ========== Main Content ========== */
+main {
+  padding: 15px;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* ========== Delorean Ad Section ========== */
+.delorean-ad {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blue-text {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.delorean-ad ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.delorean-ad img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-top: 10px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* ========== Reviews Section ========== */
+.delorean-reviews ul {
+  padding: 0;
+  list-style: none;
+}
+
+.delorean-reviews li {
+  margin-bottom: 10px;
+}
+
+/* ========== Upgrades Section ========== */
+.upgrades-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.upgrade-item {
+  background-color: #17a2b8;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.upgrade-item img {
+  width: 80%;
+  height: auto;
+}
+
+.upgrade-item a {
+  display: block;
+  font-weight: bold;
+  color: blue;
+  margin-top: 5px;
+}
+
+/* ========== Footer ========== */
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+  background-color: #333;
+  color: white;
+}
+
+/* ========== Responsive Styles for Larger Screens ========== */
+@media screen and (min-width: 768px) {
+  .delorean-ad {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+
+  .delorean-ad img {
+      width: 50%;
+  }
+
+  .upgrades-grid {
+      grid-template-columns: repeat(4, 1fr);
+  }
+}
