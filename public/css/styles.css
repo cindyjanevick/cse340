@@ -62,23 +62,41 @@ nav ul li:hover {
 
 /* Hero Section */
 .deloread-ad {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
+  position: relative;
+  max-width: 800px;
+  margin: auto;
 }
 
 .deloread-ad img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
+  display: block;
 }
 
-.blue-text {
-  color: blue;
+.deloread-ad .hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  text-align: center;
 }
 
-.btn {
+.hero-text h2 {
+  margin: 0;
+}
+
+.hero-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.hero-text .btn {
   display: inline-block;
   background-color: blue;
   color: white;
@@ -130,13 +148,7 @@ footer {
 /* Responsive Design */
 @media (min-width: 768px) {
   .deloread-ad {
-      flex-direction: row;
-      justify-content: center;
-      text-align: left;
-  }
-
-  .deloread-ad img {
-      width: 50%;
+      max-width: 1000px;
   }
 
   .upgrades-reviews {
