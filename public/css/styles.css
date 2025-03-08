@@ -10,8 +10,8 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: url('/images/site/checkerboard.jpg');
-    background-size: 150px 150px;
+    background: url('/images/checkerboard.png');
+    background-size: 300px 300px;
     margin: 0;
     padding: 0;
 }
@@ -25,28 +25,31 @@ body {
 #wrapper {
     background: white;
     max-width: 900px;
-    height: 100vh;
+    min-height: 100vh;
     margin: auto;
     padding: 20px;
     border: 5px solid lightblue;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
 #top-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .siteName {
-    font-size: 1.5em;
+    font-size: 2.5em;
     font-weight: bold;
 }
 
 #tools {
     margin-left: auto;
+    text-align: right;
 }
 
 nav ul {
@@ -61,9 +64,18 @@ nav ul {
 #hero {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background: lightgray;
     padding: 20px;
+    position: relative;
+}
+
+.hero-text {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    position: absolute;
+    left: 10%;
+    text-align: left;
 }
 
 .hero-text h2 a {
@@ -82,6 +94,8 @@ nav ul {
 #content {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
 }
 
 #upgrades, #reviews {
@@ -103,12 +117,16 @@ nav ul {
 .upgrade-item a {
     display: block;
     margin-top: 5px;
+    background: none;
 }
 
 @media (max-width: 600px) {
     #hero {
         flex-direction: column;
         text-align: center;
+    }
+    .hero-text {
+        position: static;
     }
     #content {
         flex-direction: column;
