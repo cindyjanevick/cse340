@@ -7,62 +7,116 @@
   box-sizing: border-box;
   font-family: 'Times New Roman', Times, serif;
 }
+
 body {
-  font-family: Arial, sans-serif;
-  background: url('/images/site/checkerboard.jpg');
-  background-size: 100px 100px;
-  margin: 0;
-  padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('/images/site/checkerboard.jpg');
+    background-size: 150px 150px;
+    margin: 0;
+    padding: 0;
 }
-#wrapper {
-  background: white;
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-  border: 5px solid lightblue;
-}
-nav ul {
-  display: flex;
-  justify-content: space-around;
-  background: navy;
-  padding: 10px;
-  list-style: none;
-  color: white;
-}
-#hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: lightgray;
-  padding: 20px;
-}
-.hero-text h2 a {
-  color: blue;
-  text-decoration: none;
-}
-.hero-text button {
-  background: blue;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  cursor: pointer;
-}
-.upgrade-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-.upgrade-item {
-  background: lightblue;
-  text-align: center;
-  padding: 10px;
-}
+
 @media (max-width: 600px) {
-  #hero {
-      flex-direction: column;
-      text-align: center;
-  }
-  .upgrade-grid {
-      grid-template-columns: 1fr;
-  }
+    body {
+        background: white;
+    }
+}
+
+#wrapper {
+    background: white;
+    max-width: 900px;
+    height: 100vh;
+    margin: auto;
+    padding: 20px;
+    border: 5px solid lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.siteName {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#tools {
+    margin-left: auto;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    background: navy;
+    padding: 10px;
+    list-style: none;
+    color: white;
+}
+
+#hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: lightgray;
+    padding: 20px;
+}
+
+.hero-text h2 a {
+    color: blue;
+    text-decoration: none;
+}
+
+.hero-text button {
+    background: blue;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+#content {
+    display: flex;
+    justify-content: space-between;
+}
+
+#upgrades, #reviews {
+    width: 45%;
+}
+
+.upgrade-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.upgrade-item {
+    background: lightblue;
+    text-align: center;
+    padding: 10px;
+}
+
+.upgrade-item a {
+    display: block;
+    margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+    #hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    #content {
+        flex-direction: column;
+    }
+    #upgrades, #reviews {
+        width: 100%;
+    }
+    .upgrade-grid {
+        grid-template-columns: 1fr;
+    }
 }
