@@ -1,166 +1,68 @@
+/** public/css/styles.css */
+
 /******* Change Box Model ***************/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
 }
-/* General Styles */
 body {
   font-family: Arial, sans-serif;
+  background: url('/images/site/checkerboard.jpg');
+  background-size: 100px 100px;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
-
-/* Header Styles */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #222;
-  color: white;
-  padding: 15px 20px;
-}
-
-.siteName a {
-  text-decoration: none;
-  color: white;
-  font-size: 1.8em;
-  font-weight: bold;
-}
-
-#tools a {
-  color: white;
-  text-decoration: none;
-  font-size: 1em;
-}
-
-/* Navigation Styles */
-nav {
-  background-color: #444;
-  padding: 10px 0;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-}
-
-nav ul li {
-  padding: 10px 20px;
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-nav ul li:hover {
-  background-color: #666;
-}
-
-/* Hero Section */
-.deloread-ad {
-  position: relative;
-  max-width: 800px;
+#wrapper {
+  background: white;
+  max-width: 900px;
   margin: auto;
-}
-
-.deloread-ad img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.deloread-ad .hero-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
   padding: 20px;
-  border-radius: 10px;
-  width: 80%;
-  text-align: center;
+  border: 5px solid lightblue;
 }
-
-.hero-text h2 {
-  margin: 0;
-}
-
-.hero-text ul {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0;
-}
-
-.hero-text .btn {
-  display: inline-block;
-  background-color: blue;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  margin-top: 10px;
-  border-radius: 5px;
-}
-
-/* Content Sections */
-.upgrades-reviews {
+nav ul {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+  background: navy;
+  padding: 10px;
+  list-style: none;
+  color: white;
+}
+#hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: lightgray;
   padding: 20px;
 }
-
-.delorean-upgrades, .delorean-reviews {
-  margin-bottom: 20px;
+.hero-text h2 a {
+  color: blue;
+  text-decoration: none;
 }
-
-.upgrades-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  text-align: center;
-}
-
-.upgrade-item img {
-  width: 100%;
-  border-radius: 5px;
-}
-
-.reviews-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-/* Footer Styles */
-footer {
-  background-color: #222;
+.hero-text button {
+  background: blue;
   color: white;
-  text-align: center;
-  padding: 15px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
 }
-
-/* Responsive Design */
-@media (min-width: 768px) {
-  .deloread-ad {
-      max-width: 1000px;
+.upgrade-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.upgrade-item {
+  background: lightblue;
+  text-align: center;
+  padding: 10px;
+}
+@media (max-width: 600px) {
+  #hero {
+      flex-direction: column;
+      text-align: center;
   }
-
-  .upgrades-reviews {
-      flex-direction: row;
-      justify-content: space-between;
-  }
-
-  .delorean-upgrades, .delorean-reviews {
-      width: 48%;
-  }
-
-  .upgrades-grid {
-      grid-template-columns: repeat(4, 1fr);
+  .upgrade-grid {
+      grid-template-columns: 1fr;
   }
 }
