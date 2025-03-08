@@ -10,7 +10,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: url('/images/site/checkerboard.jpg');
+    background: url('/images/site/small_check.jpg');
     background-size: 150px 150px;
     /* margin: 0; */
     padding: 0;
@@ -49,6 +49,7 @@ body {
 #tools {
     margin-left: auto;
     text-align:right;
+    padding:0.5rem;
 }
 
 nav ul {
