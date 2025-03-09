@@ -108,6 +108,20 @@ nav ul li {
 .hero-text p {
   margin: 5px 0;
 }
+.hero-btn {
+  display: inline-block;
+  background: blue;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  background: darkblue;
+}
 
 .hero-text button {
   background: blue;
