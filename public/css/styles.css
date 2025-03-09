@@ -9,7 +9,7 @@
 body {
     font-family: Arial, sans-serif;
     background: url('/images/site/small_check.jpg');
-    background-size: 150px 150px;
+    /* background-size: 150px 150px; */
     margin: 0;
     padding: 0;
 }
