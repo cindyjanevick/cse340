@@ -12,7 +12,7 @@ body {
     font-family: Arial, sans-serif;
     background: url('/images/site/small_check.jpg');
     /* background-size: 150px 150px; */
-    margin: 0;
+    /* margin: 0; */
     padding: 0;
 }
 
@@ -26,7 +26,7 @@ body {
 #wrapper {
     background: white;
     max-width: 900px;
-    min-height: 100vh;
+    min-height: 98vh;
     margin: auto;
     padding: 20px;
     border: 5px solid lightblue;
@@ -84,7 +84,7 @@ nav ul li {
     position: absolute;
     left: 10%;
     top: 20%;
-    background: rgba(255, 255, 255, 1);
+    background: rgba(255, 255, 255, 0.5);
     padding: 15px;
     border-radius: 8px;
     width: fit-content; /* Prevents the box from stretching too much */
@@ -98,16 +98,17 @@ nav ul li {
 }
 
 .hero-text p {
-    margin: 5px 0;
+    margin: 0 0 5px 0;
 }
 
 .hero-text button {
     background: blue;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 15px 15px;
     cursor: pointer;
-    font-weight: bold
+    font-weight: bold;
+    margin:0 30px;
 }
 
 /* Content Section */
