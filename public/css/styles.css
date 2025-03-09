@@ -69,7 +69,7 @@ nav ul li {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 20px;
 }
 
@@ -85,6 +85,8 @@ nav ul li {
     background: rgba(255, 255, 255, 0.8);
     padding: 15px;
     text-align: left;
+    width: fit-content; /* Prevents the box from stretching too much */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Optional shadow */
 }
 
 .hero-text h2 a {
@@ -103,6 +105,7 @@ nav ul li {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 /* Content Section */
@@ -143,7 +146,7 @@ nav ul li {
 .upgrade-item img {
     background: lightblue;
     padding: 10px;
-    width: 100px;
+    width: 100%;
     height: 100px;
     object-fit: contain;
 }
@@ -163,8 +166,10 @@ nav ul li {
     }
 
     .hero-text {
-        position: static;
-        text-align: center;
+      left: 5%;  /* Adjust position for smaller screens */
+      top: 10%;
+      width: 90%;  /* Make sure the text box doesn’t overflow */
+      text-align: center;
     }
 
     #content {
@@ -182,4 +187,8 @@ nav ul li {
     .upgrade-grid {
         grid-template-columns: 1fr 1fr;
     }
+    .hero-image {
+      width: 100%;
+      max-width: 100%;
+  }
 }
