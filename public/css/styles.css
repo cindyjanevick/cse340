@@ -106,7 +106,7 @@ nav ul {
     gap: 10px;
 }
 
-.upgrade-item {
+.upgrade-item >img{
     background: lightblue;
     text-align: center;
     padding: 10px;
