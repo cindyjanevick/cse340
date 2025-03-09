@@ -40,6 +40,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 .siteName {
@@ -100,7 +102,7 @@ nav ul li {
 }
 
 .hero-text a {
-  color: blue;
+  /* color: blue; */
   text-decoration: none;
   font-size: 1.2em;
 }
@@ -212,16 +214,19 @@ p.copyright{
       /* left: 50%; */
       /* top: 50%; */
       transform: translate(-50%, -50%);
-      max-width: 90%; /* Prevent overflow */
+      max-width: 45%; /* Prevent overflow */
       background: rgba(255, 255, 255, 0.75); /* More opacity for readability */
       padding: 10px;
+      font-size: xx-small;
   }
 
   .hero-image {
       width: 100%;
       max-width: 100%;
   }
-
+  h1{
+    font-size: 1.5em;
+  }
 
     #content {
         flex-direction: column;
