@@ -5,26 +5,18 @@
 *:before,
 *:after {
   box-sizing: border-box;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-image: url('/images/site/small_check.jpg');
-  background-position: top;
-  background-attachment: fixed;
-  background-repeat: repeat-y;
-  margin: 0;
-  font-family: var(--body-font);
-  border-radius: 0;
-  border-width: 0;
-  transition: padding 1s;
+    font-family: Arial, sans-serif;
+    background: url('/images/site/small_check.jpg');
+    /* background-size: 150px 150px; */
+    margin: 0;
+    padding: 0;
 }
-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+
+/* Mobile View */
 @media (max-width: 600px) {
     body {
         background: white;
@@ -34,16 +26,16 @@ header {
 #wrapper {
     background: white;
     max-width: 900px;
-    height: 100vh;
+    min-height: 100vh;
     margin: auto;
     padding: 20px;
     border: 5px solid lightblue;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     border-radius: 10px;
 }
 
+/* Header */
 #top-header {
     display: flex;
     justify-content: space-between;
@@ -56,9 +48,8 @@ header {
 }
 
 #tools {
-    margin-left: auto;
-    text-align:right;
-    padding:0.5rem;
+    text-align: right;
+    padding: 0.5rem;
 }
 
 nav ul {
@@ -70,23 +61,44 @@ nav ul {
     color: white;
 }
 
+nav ul li {
+    color: white;
+    cursor: pointer;
+}
+
+/* Hero Section */
 #hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* background: lightgray; */
-    padding: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center content horizontally */
+  padding: 20px;
 }
+
+.hero-image {
+    width: 100%;
+    max-width: 600px;
+}
+
 .hero-text {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 15px;
-  position: absolute;
-  left: 10%;
-  text-align: left;
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    background: rgba(255, 255, 255, 1);
+    padding: 15px;
+    border-radius: 8px;
+    width: fit-content; /* Prevents the box from stretching too much */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); 
 }
+
 .hero-text h2 a {
     color: blue;
     text-decoration: none;
+    font-size: 1.5em;
+}
+
+.hero-text p {
+    margin: 5px 0;
 }
 
 .hero-text button {
@@ -95,57 +107,89 @@ nav ul {
     border: none;
     padding: 10px 15px;
     cursor: pointer;
+    font-weight: bold
 }
 
+/* Content Section */
 #content {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
+/* Reviews & Upgrades */
 #upgrades, #reviews {
     width: 45%;
 }
 
+#reviews ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#reviews ul li {
+    margin-bottom: 10px;
+}
+
+/* Upgrade Grid */
 .upgrade-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
 
-.upgrade-item >img{
-    background: lightblue;
+.upgrade-item {
     text-align: center;
+}
+
+.upgrade-item img {
+    background: lightblue;
     padding: 10px;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
 }
 
 .upgrade-item a {
     display: block;
     margin-top: 5px;
-    background: none;
-    text-align: center;
+    text-decoration: none;
+    color: blue;
 }
 
+/* Mobile View Adjustments */
 @media (max-width: 600px) {
     #hero {
         flex-direction: column;
         text-align: center;
     }
-    .hero-text{
-      position:static;
+
+    .hero-text {
+      left: 5%;  /* Adjust position for smaller screens */
+      /* top: 10%; */
+      width: 40%;  /* Make sure the text box doesn’t overflow */
+      height:60%;
+      text-align: center;
     }
+    .hero-image {
+      width: 100%;
+      max-width: 100%;
+  }
     #content {
         flex-direction: column;
     }
+
     #reviews {
-      order: -1;
-  }
+        order: -1;
+    }
+
     #upgrades, #reviews {
         width: 100%;
     }
-    /* .upgrade-grid {
-        grid-template-columns: 1fr;
-    } */
-}
+
+    .upgrade-grid {
+        grid-template-columns: 1fr 1fr;
+    }}
