@@ -83,7 +83,7 @@ nav ul li {
 /* Hero Text Overlay */
 .hero-text {
   position: absolute;
-  left: 50%;
+  left: 20%;
   top: 50%;
   transform: translate(-50%, -50%); /* Centering */
   background: rgba(255, 255, 255, 0.6); /* Slightly transparent */
@@ -102,7 +102,7 @@ nav ul li {
 .hero-text a {
   color: blue;
   text-decoration: none;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 .hero-text p {
@@ -169,7 +169,7 @@ nav ul li {
 .upgrade-item img {
     background: lightblue;
     padding: 10px;
-    width: 100px;
+    width: 100%;
     height: 100px;
     object-fit: contain;
 }
@@ -177,10 +177,12 @@ nav ul li {
 .upgrade-item a {
     display: block;
     margin-top: 5px;
-    text-decoration: none;
+    /* text-decoration: none; */
     color: blue;
 }
-
+p.copyright{
+  padding:100px 0 50px 0;
+}
 /* Mobile View Adjustments */
 /* Responsive */
 /* Mobile View - Keep Overlay Effect */
@@ -193,8 +195,8 @@ nav ul li {
 
   .hero-text {
       position: absolute; /* Keep overlay */
-      left: 50%;
-      top: 50%;
+      /* left: 50%; */
+      /* top: 50%; */
       transform: translate(-50%, -50%);
       max-width: 90%; /* Prevent overflow */
       background: rgba(255, 255, 255, 0.75); /* More opacity for readability */
