@@ -1,0 +1,11 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else { %>
+    <h1>Oops! Something Went Wrong</h1>
+<% } %>
+
+<!-- Fun message based on error -->
+<p class="fun-message">
+    <!-- Display the error message or a fun default message -->
+    <%- message || 'Looks like you took a wrong turn. Let’s get you back on track!' %>
+</p>

@@ -199,6 +199,41 @@ nav ul li {
 p.copyright{
   padding:100px 0 50px 0;
 }
+
+/*error
+/* Fun Message Styling */
+.fun-message {
+  font-size: 1.5em;
+  color: #3498db;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Error Message Styling */
+p {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* Home Button Styling */
+.home-btn {
+  font-size: 1.2em;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #2ecc71;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.home-btn:hover {
+  background-color: #27ae60;
+}
+
+
+
+
 /* Mobile View Adjustments */
 /* Responsive */
 /* Mobile View - Keep Overlay Effect */
