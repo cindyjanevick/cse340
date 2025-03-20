@@ -1,6 +1,5 @@
-
-
 /******* Change Box Model ***************/
+/* Reset box-sizing and set the font family */
 *,
 *:before,
 *:after {
@@ -11,8 +10,6 @@
 body {
     font-family: Arial, sans-serif;
     background: url('/images/site/small_check.jpg');
-    /* background-size: 150px 150px; */
-    /* margin: 0; */
     padding: 0;
 }
 
@@ -54,18 +51,35 @@ body {
     padding: 0.5rem;
 }
 
+/* Navbar */
 nav ul {
     display: flex;
     justify-content: space-around;
     background: navy;
     padding: 10px;
     list-style: none;
-    color: white;
 }
 
 nav ul li {
     color: white;
-    cursor: pointer;
+}
+
+nav ul li a {
+    color: white; /* Set color for unvisited links */
+    text-decoration: none; /* Remove underline */
+    display: block; /* Make the entire list item clickable */
+}
+
+nav ul li a:visited {
+    color: white; /* Keeps the color white after visiting */
+}
+
+nav ul li a:hover {
+    color: #FFD700; /* Change to golden color on hover */
+}
+
+nav ul li a:active {
+    color: #FFD700; /* Keep golden color when active (clicked) */
 }
 
 /* Hero Section */
@@ -102,7 +116,6 @@ nav ul li {
 }
 
 .hero-text a {
-  /* color: blue; */
   text-decoration: none;
   font-size: 1.2em;
 }
@@ -110,6 +123,7 @@ nav ul li {
 .hero-text p {
   margin: 5px 0;
 }
+
 .hero-btn {
   display: inline-block;
   background: blue;
@@ -142,10 +156,6 @@ nav ul li {
   font-size: 1em;
   display: block;
 }
-
-
-
-
 
 /* Content Section */
 #content {
@@ -193,14 +203,13 @@ nav ul li {
 .upgrade-item a {
     display: block;
     margin-top: 5px;
-    /* text-decoration: none; */
     color: blue;
 }
+
 p.copyright{
   padding:100px 0 50px 0;
 }
 
-/*error
 /* Fun Message Styling */
 .fun-message {
   font-size: 1.5em;
@@ -231,12 +240,8 @@ p {
   background-color: #27ae60;
 }
 
-
-
-
 /* Mobile View Adjustments */
 /* Responsive */
-/* Mobile View - Keep Overlay Effect */
 @media (max-width: 600px) {
   #hero {
       flex-direction: column;
@@ -245,9 +250,7 @@ p {
   }
 
   .hero-text {
-      position: absolute; /* Keep overlay */
-      /* left: 50%; */
-      /* top: 50%; */
+      position: absolute;
       transform: translate(-50%, -50%);
       max-width: 45%; /* Prevent overflow */
       background: rgba(255, 255, 255, 0.75); /* More opacity for readability */
@@ -259,22 +262,109 @@ p {
       width: 100%;
       max-width: 100%;
   }
+
   h1{
     font-size: 1.5em;
   }
 
-    #content {
-        flex-direction: column;
-    }
+  #content {
+      flex-direction: column;
+  }
 
-    #reviews {
-        order: -1;
-    }
+  #reviews {
+      order: -1;
+  }
 
-    #upgrades, #reviews {
-        width: 100%;
-    }
+  #upgrades, #reviews {
+      width: 100%;
+  }
 
-    .upgrade-grid {
-        grid-template-columns: 1fr 1fr;
-    }}
+  .upgrade-grid {
+      grid-template-columns: 1fr 1fr;
+  }
+  #inv-display {
+    justify-content: space-around;
+  }
+
+  #inv-display li {
+    width: 45%; /* Two columns on medium screens */
+  }
+
+
+
+}
+
+/* General styles for vehicle inventory display */
+#inv-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  list-style: none;
+}
+
+/* Individual card styles */
+#inv-display li {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 300px; /* Prevents cards from getting too big */
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+}
+
+#inv-display li:hover {
+  transform: scale(1.05);
+}
+
+/* Image Styling */
+#inv-display img {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #000;
+}
+
+/* Vehicle Name and Price */
+.namePrice {
+  padding: 10px;
+}
+
+.namePrice h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.namePrice a {
+  color: blue;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.namePrice a:hover {
+  text-decoration: underline;
+}
+
+.namePrice span {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  margin-top: 5px;
+}
+
+/* Responsive Design */
+
+@media (min-width: 900px) {
+  #inv-display li {
+      width: 30%; /* Three columns on larger screens */
+  }
+}
+
+@media (min-width: 1200px) {
+  #inv-display li {
+      width: 30%; /* More compact layout on extra-large screens */
+  }
+}
