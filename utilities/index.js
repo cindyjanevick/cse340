@@ -57,6 +57,45 @@ Util.buildClassificationGrid = async function(data){
   }
   return grid
 }
+
+/**
+ * Build a single listing element from data
+ */
+Util.buildItemListing = async function (data) {
+  let listingHTML = "";
+  if (data) {
+    listingHTML = `
+      <h1>${data.inv_year} ${data.inv_make} ${data.inv_model}</h1>
+      <section class="car-listing">
+        <img src="${data.inv_image}" alt="${data.inv_make} ${data.inv_model}">
+        <div class="car-information">
+          <div>
+            <h2>${data.inv_make} ${data.inv_model} Details</h2>
+          </div>
+          <div>
+            <strong>Price:</strong> ${Number.parseFloat(data.inv_price).toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}
+          </div>
+          <div class="description">
+            <p>
+              <strong>Description:</strong> ${data.inv_description}
+            </p>
+            <p><strong>Color:</strong> ${data.inv_color}</p>
+            <p><strong>Miles:</strong> ${data.inv_miles.toLocaleString("en-US")}</p>
+          </div>
+        </div>
+      </section>
+    `;
+  } else {
+    listingHTML = `
+      <p>Sorry, no matching vehicles could be found.</p>
+    `;
+  }
+  return listingHTML;
+};
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

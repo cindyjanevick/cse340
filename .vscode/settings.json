@@ -26,5 +26,10 @@
             "username": "cse340db2",
             "connectString": "postgresql://cse340db2:uqVx0KH96XVrAhVKJc7ZLGqzlR5Rr1ri@dpg-cv9hfiggph6c73e8r7vg-a.singapore-postgres.render.com/cse340db2_54u9"
         }
-    ]
+    ],
+    "launch": {
+        
+        "configurations": [],
+        "compounds": []
+    }
 }

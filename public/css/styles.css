@@ -13,12 +13,7 @@ body {
     padding: 0;
 }
 
-/* Mobile View */
-@media (max-width: 600px) {
-    body {
-        background: white;
-    }
-}
+
 
 #wrapper {
     background: white;
@@ -243,6 +238,11 @@ p {
 /* Mobile View Adjustments */
 /* Responsive */
 @media (max-width: 600px) {
+
+  body {
+    background: white;
+}
+
   #hero {
       flex-direction: column;
       text-align: center;
@@ -367,4 +367,93 @@ p {
   #inv-display li {
       width: 30%; /* More compact layout on extra-large screens */
   }
+}
+/* VEHICLE DETAIL PAGE STYLING */
+
+/* Section wrapper for the vehicle detail */
+.car-listing {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 20px;
+}
+
+.car-listing img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Vehicle info block */
+.car-information {
+  font-size: 1.1em;
+  line-height: 1.6;
+  padding: 0 10px;
+}
+
+/* Make, Model, Year Heading */
+.car-information h2 {
+  font-size: 1.8em;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+/* Price styling */
+.car-information > div:nth-child(2) {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: darkblue;
+  margin-bottom: 1rem;
+}
+
+/* Descriptive text */
+.description p {
+  margin-bottom: 1rem;
+  font-size: 1em;
+  color: #555;
+}
+
+/* Data list styling */
+.description dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 1rem;
+  font-size: 1em;
+}
+
+.description dt {
+  font-weight: bold;
+  color: #34495e;
+}
+
+.description dd {
+  margin: 0;
+}
+
+/* Responsive Layout: Side-by-side on large screens */
+@media (min-width: 768px) {
+  .car-listing {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .car-listing img {
+    max-width: 50%;
+  }
+
+  .car-information {
+    max-width: 50%;
+    padding-left: 1rem;
+  }
+}
+
+/* Ensure no horizontal scroll */
+body {
+  overflow-x: hidden;
+}
+h1.static-heading {
+  display: none;
 }
