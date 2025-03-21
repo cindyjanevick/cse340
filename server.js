@@ -12,6 +12,7 @@ const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
+const intentionalErrorRoute = require("./routes/intentionalErrorRoute.js")
 const utilities = require("./utilities/")
 
 /* ***********************
@@ -33,6 +34,9 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 
 // //Inventory routes
 app.use('/inv', require("./routes/inventoryRoute"))
+
+// Intentional 500 Error Route for Testing
+app.use("/ierror", intentionalErrorRoute);
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
