@@ -1,0 +1,27 @@
+<h1 class="page-title"><%= title %></h1>
+
+<%- messages() %>
+
+<div class="form-container">
+  <form method="post" class="form">
+    <label for="userEmail" class="form-label">Email</label>
+    <input type="email" id="userEmail" class="form-input" name="account_email" required value="<%= locals.account_email %>">
+
+    <label for="userPassword" class="form-label">Password</label>
+    <input type="password" class="form-input" id="userPassword" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+
+    <div class="password-requirements">
+      <p>Password must meet the following criteria:</p>
+      <ul>
+        <li>At least 12 characters</li>
+        <li>1 number</li>
+        <li>1 lowercase letter</li>
+        <li>1 uppercase letter</li>
+        <li>1 special character</li>
+      </ul>
+    </div>
+
+    <button type="submit" id="submitBtn" class="btn-submit">Submit</button>
+    <p class="form-footer">No account? <a href="/account/register" class="form-link">Sign-up</a></p>
+  </form>
+</div>
