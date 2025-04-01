@@ -1,15 +1,12 @@
-// password.js
-const pswdBtn = document.querySelector("#passwordBtn");
-
+const pswdBtn = document.querySelector("#pswdBtn");
 pswdBtn.addEventListener("click", function() {
-    const pswdInput = document.getElementById("account_password");
+    const pswdInput = document.getElementById("password");
     const pswdType = pswdInput.getAttribute("type");
-
-    if (pswdType === "password") {
-        pswdInput.setAttribute("type", "text");
-        pswdBtn.innerHTML = "Hide Password";
+    if (pswdType == "password") {
+    pswdInput.setAttribute("type", "text")
+    pswdBtn.innerHTML = "Hide Password";
     } else {
-        pswdInput.setAttribute("type", "password");
-        pswdBtn.innerHTML = "Show Password";
+    pswdInput.setAttribute("type", "password")
+    pswdBtn.innerHTML = "Show Password";
     }
 });

@@ -19,7 +19,10 @@ invCont.buildByClassificationId = async function (req, res, next) {
   });
 };
 
-// activity3
+/* ***************************
+ *  Build inventory Item Detail View
+ * ************************** */
+
 invCont.buildByInventoryId = async function (req, res, next) {
   const inventoryId = req.params.inventoryId;
   const data = await invModel.getInventoryByInventoryId(inventoryId);
@@ -33,4 +36,28 @@ invCont.buildByInventoryId = async function (req, res, next) {
   });
 };
 
+/* ***************************
+ *  Build Management View
+ * ************************** */
+
+invCont.buildManagementView = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  const classificationSelect = await utilities.buildClassificationList();
+  res.render("inventory/management", {
+    title: "Inventory Management",
+    nav,
+    classificationSelect,
+    notice: req.flash("notice")
+  });
+};
+
+// Show the Add Classification form
+
+// Handle POST classification insert
+
+
+// Show add inventory form
+
+
+// Handle form POST
 module.exports = invCont

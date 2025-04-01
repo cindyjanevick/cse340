@@ -451,232 +451,313 @@ p {
 }
 
 /*login*/
-
-.page-title {
-  font-size: 2.5em;
-  text-align: center;
-  margin-top: 20px;
-  color: #333;
-}
-
-.form-container {
+/* Container for the form */
+.login-container {
   width: 100%;
-  max-width: 480px;
-  margin: 30px auto;
+  max-width: 400px;
+  padding: 25px;
   background-color: #fff;
-  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* text-align: center; */
+  margin: 60px auto; /* Center the form vertically */
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
+/* Form title */
+h1 {
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
 }
 
-.form-label {
-  margin-top: 10px;
-  font-size: 1.1em;
-  color: #333;
+/* Label styling */
+label {
+  font-size: 16px;
+  color: #34495e;
+  margin-bottom: 8px;
+  text-align: left;
+  display: inline-block;
+  font-family: 'Arial', sans-serif;
 }
 
-.form-input {
+/* Input Fields */
+input[type="email"],
+input[type="password"] {
+  width: 100%;
   padding: 12px;
-  font-size: 1em;
-  margin-top: 5px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
   border-radius: 6px;
-  border: 1px solid #ccc;
-  margin-bottom: 15px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
-.form-input:focus {
+/* Focus state for inputs */
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
   outline: none;
-  border-color: #4CAF50;
 }
 
-.password-requirements {
-  margin-top: 10px;
-  font-size: 0.9em;
-  color: #555;
-}
-
-.password-requirements p {
-  font-weight: bold;
-  color: #333;
-}
-
-.password-requirements ul {
-  list-style: none;
-  padding-left: 20px;
-}
-
-.password-requirements li {
-  margin-bottom: 5px;
-}
-
-.btn-submit {
-  background-color: #4CAF50;
-  color: white;
-  font-size: 1.1em;
-  padding: 12px;
+/* Submit button */
+#submitBtn {
+  width: 100%;
+  padding: 14px;
+  background-color: #3498db;
+  color: #fff;
   border: none;
   border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+/* Hover effect for the submit button */
+#submitBtn:hover {
+  background-color: #2980b9;
+}
+
+/* Password strength message */
+div {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin-top: 10px;
+}
+
+/* Sign-up link */
+p {
+  font-size: 16px;
+  color: #7f8c8d;
+  margin-top: 15px;
+}
+
+p a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+p a:hover {
+  color: #2980b9;
+}
+
+/* Error messages */
+.notice {
+  background-color: #f2dede;
+  color: #e74c3c;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: left;
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 768px) {
+  .container {
+      padding: 20px;
+      width: 90%;
+  }
+
+  h1 {
+      font-size: 24px;
+  }
+
+  label {
+      font-size: 14px;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+      font-size: 15px;
+  }
+
+  #submitBtn {
+      font-size: 16px;
+  }
+
+  p {
+      font-size: 14px;
+  }
+}
+
+/* Container to center everything */
+.register-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Hero content container */
+.hero-content {
+  max-width: 500px;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Heading style */
+h1 {
+  font-size: 28px;
+  color: #34495e;
+  margin-bottom: 15px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Paragraph style */
+p {
+  font-size: 16px;
+  color: #7f8c8d;
+  margin-bottom: 30px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Card container style */
+.card {
+  width: 100%;
+}
+
+/* Form body container */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input fields and labels */
+.form-control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+/* Label styling */
+.label-text {
+  font-size: 16px;
+  color: #34495e;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Input field styling */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Input field focus effect */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+  outline: none;
+}
+
+/* Password strength message */
+i {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin-top: 10px;
+}
+
+/* Show password toggle */
+.leftPswrd {
+  text-align: left;
+  font-size: 14px;
+}
+
+#pswdBtn {
+  color: #3498db;
+  cursor: pointer;
+  align-items: left;
+}
+
+#pswdBtn:hover {
+  text-decoration: underline;
+}
+
+/* Error message styling */
+.notice {
+  background-color: #f2dede;
+  color: #e74c3c;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: left;
+  font-style: italic;
+}
+
+/* Submit button styling */
+.btn {
+  padding: 14px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.btn-submit:hover {
-  background-color: #45a049;
+/* Hover effect for submit button */
+.btn:hover {
+  background-color: #2980b9;
 }
 
-.form-footer {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 1em;
-}
-
-.form-footer a {
-  color: #007BFF;
-}
-
-.form-footer a:hover {
-  text-decoration: underline;
-}
-
-/* Error Display */
-.error-list {
-  list-style-type: none;
-  padding: 0;
-  color: red;
-}
-
-.error-list li {
-  margin: 5px 0;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-  .form-container {
-    width: 90%;
+/* Responsive design for smaller screens */
+@media screen and (max-width: 768px) {
+  .hero-content {
+      padding: 20px;
+      max-width: 90%;
   }
 
-  .page-title {
-    font-size: 2em;
+  h1 {
+      font-size: 24px;
+  }
+
+  .form-control {
+      width: 100%;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+      font-size: 14px;
+  }
+
+  .btn {
+      font-size: 16px;
+  }
+
+  p {
+      font-size: 14px;
   }
 }
 
-/* register */
-
-
-.page-title {
-  font-size: 2.5em;
-  text-align: center;
-  margin-top: 20px;
-  color: #333;
-}
-
-.form-container {
-  width: 100%;
-  max-width: 480px;
-  margin: 30px auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-label {
-  margin-top: 10px;
-  font-size: 1.1em;
-  color: #333;
-}
-
-.form-input {
-  padding: 12px;
-  font-size: 1em;
-  margin-top: 5px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  margin-bottom: 15px;
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: #4CAF50;
-}
-
-.password-requirements {
-  margin-top: 10px;
-  font-size: 0.9em;
-  color: #555;
-}
-
-.password-requirements p {
-  font-weight: bold;
-  color: #333;
-}
-
-.password-requirements ul {
-  list-style: none;
-  padding-left: 20px;
-}
-
-.password-requirements li {
-  margin-bottom: 5px;
-}
-
-.btn-submit {
-  background-color: #4CAF50;
-  color: white;
-  font-size: 1.1em;
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn-submit:hover {
-  background-color: #45a049;
-}
-
-.form-footer {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 1em;
-}
-
-.form-footer a {
-  color: #007BFF;
-}
-
-.form-footer a:hover {
-  text-decoration: underline;
-}
-
-/* Error Display */
-.error-list {
-  list-style-type: none;
-  padding: 0;
-  color: red;
-}
-
-.error-list li {
-  margin: 5px 0;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-  .form-container {
-    width: 90%;
-  }
-
-  .page-title {
-    font-size: 2em;
-  }
-}

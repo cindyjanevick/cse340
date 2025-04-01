@@ -1,27 +1,31 @@
-<h1 class="page-title"><%= title %></h1>
-
-<%- messages() %>
-
-<div class="form-container">
-  <form method="post" class="form">
-    <label for="userEmail" class="form-label">Email</label>
-    <input type="email" id="userEmail" class="form-input" name="account_email" required value="<%= locals.account_email %>">
-
-    <label for="userPassword" class="form-label">Password</label>
-    <input type="password" class="form-input" id="userPassword" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
-
-    <div class="password-requirements">
-      <p>Password must meet the following criteria:</p>
-      <ul>
-        <li>At least 12 characters</li>
-        <li>1 number</li>
-        <li>1 lowercase letter</li>
-        <li>1 uppercase letter</li>
-        <li>1 special character</li>
+<% if (title) {%>
+  <h1><%= title %></h1>
+  <% } else{
+      res.redirect('/')
+  }%>
+  
+  <%- messages() %>
+  
+  <% if (errors) { %>
+      <ul class="notice">
+          <% errors.array().forEach(error => { %>
+              <% if(error.msg !== "Invalid value") {%>
+                  <li><%= error.msg %></li>
+              <%}%>
+          <% }) %>
       </ul>
-    </div>
-
-    <button type="submit" id="submitBtn" class="btn-submit">Submit</button>
-    <p class="form-footer">No account? <a href="/account/register" class="form-link">Sign-up</a></p>
-  </form>
-</div>
+  <% } %>
+  
+  <div class="login-container">
+    <form action="/account/login" method="POST" class="login-form">
+          <label for="userEmail">Email</label><br>
+          <input type="email" id="userEmail" class="userEmail" name="account_email" required value="<%= locals.account_email %>"><br>
+          <label for="userPassword">Password</label><br>
+          <input type="password" class="userPassword" id="userPassword" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"><br>
+          <div>There must be at least 12 characters, one must be a number, one must be a lowercase letter, one must be a capital letter, and one must be a non-alphanumeric character.</div>
+          <input type="submit" value="Submit" id="submitBtn">
+          <p>No account?<a href="/account/register">Sign-up</a></p>
+      </form>
+  </div>
+<!-- Include password.js -->
+<script src="/js/password.js"></script>
