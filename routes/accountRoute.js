@@ -31,11 +31,20 @@ router.post(
   )
 
 // Process the login attempt
+//Unit 4, stickiness activity
+// Modified in Unit 5 Login Process activity
 router.post(
     "/login",
-    (req, res) => {
-      res.status(200).send('login process')
-    }
-  )
+    regValidate.loginRules(),
+    regValidate.checkLoginData,
+    utilities.handleErrors(accountController.accountLogin)
+)
+/*Route to account Management view */
+
+router.get(
+  "/",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildManagement)
+);
 
 module.exports = router;
