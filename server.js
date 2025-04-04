@@ -15,7 +15,7 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 // const intentionalErrorRoute = require("./routes/intentionalErrorRoute.js")
-const utilities = require("../utilities/")
+const utilities = require("./utilities/")
 
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
@@ -87,7 +87,7 @@ app.use("/account", accountRoute);
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
-  next({status: 404, message: 'Sorry, we appear to have lost that page.'})
+  next({status: 404, message: 'Oops! It looks like we have lost the page.. Maybe it went on vacation?😅'})
 })
 
 /* ***********************

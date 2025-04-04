@@ -203,6 +203,8 @@ nav ul li a:active {
 
 p.copyright{
   padding:100px 0 50px 0;
+  text-align: left;
+  color:navy;
 }
 
 /* Fun Message Styling */
@@ -214,7 +216,7 @@ p.copyright{
 }
 
 /* Error Message Styling */
-p {
+p.fun-message {
   font-size: 1.2em;
   color: #555;
   margin-bottom: 40px;
@@ -519,7 +521,10 @@ input[type="password"]:focus {
   transition: background-color 0.3s ease;
   margin-top: 20px;
 }
-
+#submitBtn + p {
+  color: blue;
+  font-size: 18px;
+}
 /* Hover effect for the submit button */
 #submitBtn:hover {
   background-color: #2980b9;
@@ -949,72 +954,159 @@ input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 /* management view */
 .manage-container {
-  max-width: 800px;
-  margin: 40px auto;
+  background-color: #f0f8ff;
   padding: 20px;
-  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  max-width: 800px;
+  margin: auto;
 }
 
 .manage-container h1 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 20px;
+  color: #0066cc; /* Blue color */
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
+.manage-container p {
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+}
 
+.admin-section {
+  margin-top: 20px;
+}
 
-.alert {
-  padding: 12px;
-  margin-bottom: 20px;
+.admin-section h2 {
+  font-size: 1.8rem;
+  color: #00509e; /* Darker blue */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.admin-section ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the list items */
+  margin: 0 auto;
+}
+
+.admin-section li {
+  margin-bottom: 15px; /* Increased space between items */
+}
+
+.admin-section li a {
+  background-color: #007bff; /* Blue background */
+  color: #fff; /* White text */
+  font-size: 1.2rem;
+  padding: 12px 25px;
   border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
+  text-decoration: none;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  display: inline-block;
+}
+
+.admin-section li a:hover {
+  transform: scale(1.1);
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.admin-section li a:focus {
+  outline: none;
+  background-color: #004085; /* Even darker blue when focused */
 }
 
 .alert-success {
-  background-color: #d4edda;
-  color: #155724;
-  border-left: 5px solid #28a745;
+  background-color: #d4edda; /* Greenish light */
+  color: #155724; /* Dark green for text */
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.alert-error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border-left: 5px solid #dc3545;
+.alert-success p {
+  margin: 0;
+}
+.management-container {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 20px auto;
+  text-align: center;
 }
 
-ul {
+.management-container h1 {
+  font-size: 2.5rem;
+  color: #0066cc;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.management-container ul {
   list-style: none;
   padding: 0;
 }
 
-ul li {
-  margin: 15px 0;
+.management-container li {
+  margin-bottom: 20px;
 }
 
+.management-container li a {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-
-ul li a:hover {
+.management-container li a:hover {
   background-color: #0056b3;
+  transform: scale(1.05);
 }
 
-@media (max-width: 600px) {
-  .manage-container {
-      padding: 15px;
-  }
-  
-  .manage-container h1 {
-      font-size: 20px;
-  }
+.management-container li a:focus {
+  outline: none;
+  background-color: #004085;
+}
 
-  ul li a {
-      font-size: 16px;
-      padding: 10px 16px;
-  }
+/* 🔒 Scoped alert styles */
+.management-container .alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.management-container .alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.management-container .alert-success p,
+.management-container .alert-error p {
+  margin: 0;
 }

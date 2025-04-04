@@ -1,14 +1,32 @@
-
-
+<!-- 
 <div class="container">
-    <% if (notice) { %>
+    <% if (notice && notice.length > 0) { %>
         <div class="alert alert-success"><%= notice %></div>
-    <% } %>
-    <% if (errors) { %>
-        <div class="alert alert-danger"><%= errors %></div>
     <% } %>
 
     <h1>You're logged in</h1>
-</div>
+</div> -->
 
-
+<div class="manage-container">
+    <% if (notice && notice.length > 0) { %>
+      <div class="alert alert-success"><%= notice %></div>
+    <% } %>
+  
+    <h1>Welcome, <%= accountData.account_firstname %>!</h1>
+  
+    <p>You are logged in as: <strong><%= accountData.account_type %></strong></p>
+  
+    <% if (accountData.account_type === 'Admin' || accountData.account_type === 'Employee') { %>
+      <div class="admin-section">
+        <h2>Management Tools</h2>
+        <ul>
+          <li><a href="/inv">Manage Inventory</a></li>
+          <li><a href="/account">Account Dashboard</a></li>
+          <!-- Add more admin links as needed -->
+        </ul>
+      </div>
+    <% } else { %>
+      <p>There are no management tools available for your account type.</p>
+    <% } %>
+  </div>
+  

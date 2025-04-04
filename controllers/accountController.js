@@ -133,7 +133,9 @@ async function buildManagement(req, res, next) {
   res.render("account/management", {
     title: "Account Management",
     nav,
+    notice: req.flash("notice"),
     errors: null,
+    accountData: res.locals.accountData, // 🔥 This line is key!
   })
 }
 

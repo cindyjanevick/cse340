@@ -46,5 +46,6 @@ router.get(
   utilities.checkLogin,
   utilities.handleErrors(accountController.buildManagement)
 );
+console.log("accountRoute is being loaded");
 
 module.exports = router;
