@@ -249,7 +249,7 @@ validate.updateAccountRules = () => {
       .withMessage("A valid email is required.")
       .custom(async (account_email, { req }) => {
         const account_id = req.body.account_id
-        const emailExistsById = await accountModel.checkExistingEmailById(account_email, account_id)
+        const emailExistsById = await accountModel.checkExistingEmail(account_email, account_id)
         const emailExists = await accountModel.checkExistingEmail(account_email)
         
         if (!emailExistsById && emailExists) {
@@ -278,7 +278,7 @@ validate.checkUpdAccData = async (req, res, next) => {
       account_firstname,
       account_lastname,
       account_email,
-      account_id,
+      // account_id,
     })
     return
   }

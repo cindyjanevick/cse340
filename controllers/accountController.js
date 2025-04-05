@@ -282,39 +282,66 @@ async function updateAccount(req, res) {
   let nav = await utilities.getNav()
   const { account_firstname, account_lastname, account_email, account_id } = req.body
   console.log(account_id)
-  const updResult = await accountModel.updateAccount(
-    account_firstname,
-    account_lastname,
-    account_email,
-    account_id
-  )
 
-  if (updResult) {
-    req.flash("notice", "Congratulations, you updated the account!")
-    // Create a new Cookie with updated data
-    const accountToken = await accountModel.getAccountByEmail(account_email)
-    delete accountToken.account_password
-    const token = jwt.sign(accountToken, process.env.ACCESS_TOKEN_SECRET, {expiresIn: 3600 * 1000})
-    if (process.env.NODE_ENV == "development"){
-      res.cookie("jwt", token, {httpOnly: true, maxAge: 3600 * 1000})
-    }else {
-      res.cookie("jwt", token, {httpOnly:true, secure: true, maxAge: 3600 * 1000})
+  try {
+    // Check if the email already exists for another account
+    const emailTaken = await accountModel.checkExistingEmail(account_email, account_id)
+    if (emailTaken) {
+      req.flash("notice", "Sorry, this email is already taken by another account.")
+      return res.status(400).render("account/update-account", {
+        title: "Edit Account",
+        nav,
+        errors: "Email is already in use by another account.",
+        accountData: req.body,  // Populate form data
+      })
     }
-    // Then render the page with the new Cookie
-    res.render("account/management", {
-      title: "Account Management",
-      nav,
-      errors: null,
-    })
-  } else {
-    req.flash("notice", "Sorry, the account update failed.")
-    res.status(501).render("account/update-account", {
+
+    // Proceed with the account update
+    const updResult = await accountModel.updateAccount(
+      account_firstname,
+      account_lastname,
+      account_email,
+      account_id
+    )
+
+    if (updResult) {
+      req.flash("notice", "Congratulations, you updated the account!")
+      // Create a new Cookie with updated data
+      const accountToken = await accountModel.getAccountByEmail(account_email)
+      delete accountToken.account_password
+      const token = jwt.sign(accountToken, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
+
+      if (process.env.NODE_ENV == "development") {
+        res.cookie("jwt", token, { httpOnly: true, maxAge: 3600 * 1000 })
+      } else {
+        res.cookie("jwt", token, { httpOnly: true, secure: true, maxAge: 3600 * 1000 })
+      }
+      // Then render the page with the new Cookie
+      res.render("account/management", {
+        title: "Account Management",
+        nav,
+        errors: null,
+      })
+    } else {
+      req.flash("notice", "Sorry, the account update failed.")
+      res.status(501).render("account/update-account", {
+        title: "Edit Account",
+        nav,
+        errors: null,
+      })
+    }
+  } catch (error) {
+    console.error(error.message)
+    req.flash("notice", "An error occurred while updating the account.")
+    res.status(500).render("account/update-account", {
       title: "Edit Account",
       nav,
-      errors: null,
+      errors: "An error occurred while updating the account.",
+      accountData: req.body, // Populate form data
     })
   }
 }
+
 
 
 
