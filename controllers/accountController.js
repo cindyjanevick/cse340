@@ -232,6 +232,7 @@ async function updateType(req, res) {
   let nav = await utilities.getNav()
   const { account_id, account_type } = req.body
   const emailSelect = await utilities.buildEmailList(account_id)
+try{
   const updResult = await accountModel.updateType(
     account_type,
     account_id
@@ -253,6 +254,16 @@ async function updateType(req, res) {
       emaillist: emailSelect,
     })
   }
+} catch (error) {
+  console.error(error);
+  req.flash("notice", "An error occurred while updating the account type.");
+  res.status(500).render("account/update-type", {
+    title: "Update Account Type",
+    nav,
+    errors: null,
+    emaillist: emailSelect,
+  });
+}
 }
 
 /* ****************************************
