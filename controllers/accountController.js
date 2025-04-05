@@ -103,6 +103,7 @@ async function accountLogin(req, res) {
     if (await bcrypt.compare(account_password, accountData.account_password)) {
       delete accountData.account_password
       const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
+      
       if(process.env.NODE_ENV === 'development') {
         res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
       } else {
@@ -139,5 +140,14 @@ async function buildManagement(req, res, next) {
   })
 }
 
+/* ****************************************
+*  Logout Account and delete cookie
+* *************************************** */
+function logoutAccount(req, res){
+  res.clearCookie("jwt");
+  res.locals.loggedin = 0;
+  return res.redirect("/");
+}
 
-module.exports = { buildLogin,buildRegister,registerAccount,accountLogin,buildManagement }
+
+module.exports = { buildLogin,buildRegister,registerAccount,accountLogin,buildManagement,logoutAccount }

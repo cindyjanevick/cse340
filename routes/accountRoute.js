@@ -46,6 +46,25 @@ router.get(
   utilities.checkLogin,
   utilities.handleErrors(accountController.buildManagement)
 );
+
+
+//Update Account Type only Admin
+router.get(
+  "/accounttype",
+  utilities.adminType, 
+  utilities.handleError(accountController.buildAccountType))
+
+
+
+//Logout Account
+router.get("/logout", accountController.logoutAccount)
+
+
+router.use(utilities.checkJWTToken)
+
+
+
+
 console.log("accountRoute is being loaded");
 
 module.exports = router;

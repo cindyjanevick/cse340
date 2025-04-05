@@ -28,6 +28,8 @@ Util.getNav = async function (req, res, next) {
   return list
 }
 
+
+
 Util.buildClassificationList = async function (classification_id = null) {
   let data = await invModel.getClassifications()
   let classificationList =
@@ -141,6 +143,8 @@ Util.checkJWTToken = (req, res, next) => {
         if (err) {
           req.flash("Please log in");
           res.clearCookie("jwt");
+          res.locals.accountData = null;
+          res.locals.loggedin = 0;
           return res.redirect("/account/login");
         }
         res.locals.accountData = accountData;
@@ -149,6 +153,8 @@ Util.checkJWTToken = (req, res, next) => {
       }
     );
   } else {
+    res.locals.accountData = null;
+    res.locals.loggedin = 0;
     next();
   }
 };
@@ -169,5 +175,21 @@ Util.checkLogin = (req, res, next) => {
   }
 };
 
+/******************************
+ * Check account type
+ **************************/
+Util.accountType = (req, res, next) => {
+  if (res.locals.accountData) {
+    if (res.locals.accountData.account_type != "Client") {
+      next();
+    } else {
+      req.flash("notice", "Access is forbidden.");
+      return res.redirect("account");
+    }
+  } else {
+    req.flash("notice", "You don't have the required account to access.");
+    return res.redirect("/account/login");
+  }
+};
 
 module.exports = Util
