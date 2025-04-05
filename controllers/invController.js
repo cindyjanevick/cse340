@@ -37,14 +37,19 @@ invCont.buildByInvId = async function(req, res, next) {
 }
 
 /* ***************************
- *  Build Management View
+ *  Build vehicle Management View
+*   Assignement 4, task 1
  * ************************** */
 invCont.buildManagementView = async function(req, res, next) {
   let nav = await utilities.getNav();
+  const classificationSelect = await utilities.buildClassificationList()
+
   res.render("./inventory/management", {
     title: "Inventory Management",
     nav,
-    notice: req.flash("notice")
+    error: null,
+    notice: req.flash("notice"),
+    classificationSelect,
   });
 };
 
@@ -132,10 +137,12 @@ invCont.addInventory = async function (req, res) {
   if (result) {
     req.flash("notice", "Vehicle successfully added!")
     nav = await utilities.getNav()
+    const classificationSelect = await utilities.buildClassificationList() // ✅ ADD THIS LINE
     res.status(201).render("./inventory/management", {
       title: "Inventory Management",
       nav,
-      notice: req.flash("notice")
+      notice: req.flash("notice"),
+      classificationSelect // ✅ PASS THIS TO THE VIEW
     })
   } else {
     req.flash("notice", "Failed to add vehicle.")
@@ -149,5 +156,29 @@ invCont.addInventory = async function (req, res) {
     })
   }
 }
+
+/* ***************************
+ *  Return Inventory by Classification As JSON
+ * ************************** */
+// In your invController.js
+
+
+invCont.getInventoryJSON = async (req, res, next) => {
+  const classification_id = parseInt(req.params.classification_id)
+  const invData = await invModel.getInventoryByClassificationId(classification_id)
+  if (invData[0].inv_id) {
+    return res.json(invData)
+  } else {
+    next(new Error("No data returned"))
+  }
+}
+
+module.exports = invCont;
+
+
+
+
+
+
 
 module.exports = invCont;

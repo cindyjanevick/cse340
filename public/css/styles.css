@@ -533,7 +533,7 @@ input[type="password"]:focus {
 /* Password strength message */
 div {
   font-size: 14px;
-  color: #7f8c8d;
+  color: rgb(69, 69, 105);
   margin-top: 10px;
 }
 
@@ -1049,7 +1049,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .management-container h1 {
   font-size: 2.5rem;
-  color: #0066cc;
+  color: black;
   margin-bottom: 30px;
   font-weight: bold;
 }

@@ -8,7 +8,7 @@ const validate = require("../utilities/account-validation");
 // Route to build inventory by classification view
 router.get("/type/:classificationId", invController.buildByClassificationId);
 
-// New route for Inventory Item Details
+// New route for Inventory Item Details (check later)
 router.get("/detail/:invId", invController.buildByInvId);
 
 // New route to build Management view
@@ -41,4 +41,20 @@ router.get(
     validate.checkInventoryData,
     utilities.handleErrors(invController.addInventory)
   )
+
+/* *********************************************
+ * Get inventory for AJAX Route
+ * Unit 5, Select inv item activity
+ * ******************************************** */
+console.log("✅ invController.getInventoryJSON:", invController.getInventoryJSON)
+router.get(
+  "/getInventory/:classification_id",
+  // utilities.checkAccountType,
+  utilities.handleErrors(invController.getInventoryJSON)
+
+)
+
+
+
+
 module.exports = router;
