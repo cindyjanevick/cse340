@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const invModel = require("../models/inventory-model");
-// const accModel = require("../models/account-model");
+const accModel = require("../models/account-model");
 const Util = {}
 
 /* ************************
@@ -160,7 +160,23 @@ Util.checkJWTToken = (req, res, next) => {
 };
 
 
-
+/************************
+ * Build drop-down select list of mails.
+ ********************/
+Util.buildEmailList = async function (account_id = null) {
+  let data = await accModel.getAccounts();
+  let emailList = '<select name="account_id" id="emailList" required>';
+  emailList += "<option value=''>Choose an Email</option>";
+  data.rows.forEach((row) => {
+    emailList += '<option value="' + row.account_id + '"';
+    if (account_id != null && row.account_id == account_id) {
+      emailList += " selected ";
+    }
+    emailList += ">" + row.account_email + "</option>";
+  });
+  emailList += "</select>";
+  return emailList;
+};
 
 
 /* ****************************************
@@ -191,5 +207,25 @@ Util.accountType = (req, res, next) => {
     return res.redirect("/account/login");
   }
 };
+
+
+/******************************
+ * Check account type of is Admin
+ **************************/
+Util.adminType = (req, res, next) => {
+  if (res.locals.accountData) {
+    if (res.locals.accountData.account_type == "Admin") {
+      next();
+    } else {
+      req.flash("notice", "Access is forbidden.");
+      return res.redirect("/account/");
+    }
+  } else {
+    req.flash("notice", "You don't have the required account to access.");
+    return res.redirect("/account/login");
+  }
+};
+
+
 
 module.exports = Util

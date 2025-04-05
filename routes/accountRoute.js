@@ -9,6 +9,7 @@ const express = require("express");
 const router = new express.Router();
 const utilities = require("../utilities/");
 const accountController = require("../controllers/accountController");
+console.log(accountController);  // Check if buildAccountType exists
 const regValidate = require('../utilities/account-validation')
 
 /* ********************************
@@ -48,11 +49,43 @@ router.get(
 );
 
 
-//Update Account Type only Admin
+// Update Account Type only Admin
 router.get(
   "/accounttype",
   utilities.adminType, 
-  utilities.handleError(accountController.buildAccountType))
+  utilities.handleErrors(accountController.buildAccountType))
+
+  // router.get("/accounttype", (req, res) => {
+  //   res.send("This route is working!");
+  // });
+
+
+router.get("/update", utilities.handleErrors(accountController.buildUpdateAccount))
+
+// This handles the account update form submission
+router.post(
+  "/update",
+  regValidate.updateAccountRules(),
+  regValidate.checkUpdAccData, 
+  utilities.handleErrors(accountController.updateAccount)
+)
+
+
+router.post(
+    "/updatetype",
+    utilities.adminType,
+    regValidate.updateTypeRules(),
+    regValidate.checkUpdateTypeData,
+    utilities.handleErrors(accountController.updateType)
+  );
+  
+  router.post('/update-pass',
+    regValidate.passwordRules(),
+    regValidate.checkUpdatePassword,
+    utilities.handleErrors(accountController.updatePassword))
+  
+
+
 
 
 

@@ -218,5 +218,188 @@ validate.checkUpdateData = async (req, res, next) => {
   next();
 };
 
+/*  **********************************
+  *  Update Data Validation Rules
+  * ********************************* */
+validate.updateAccountRules = () => {
+  return [
+    // firstname is required and must be string
+    body("account_firstname")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 1 })
+      .withMessage("Please provide a first name."), // on error this message is sent.
+
+    // lastname is required and must be string
+    body("account_lastname")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 2 })
+      .withMessage("Please provide a last name."), // on error this message is sent.
+
+    // valid email is required and cannot already exist in the DB
+    body("account_email")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isEmail()
+      .normalizeEmail()
+      .withMessage("A valid email is required.")
+      .custom(async (account_email, { req }) => {
+        const account_id = req.body.account_id
+        const emailExistsById = await accountModel.checkExistingEmailById(account_email, account_id)
+        const emailExists = await accountModel.checkExistingEmail(account_email)
+        
+        if (!emailExistsById && emailExists) {
+          throw new Error("Email exists. Please use a different email")
+    }
+  })
+
+    ,
+  ]
+}
+
+
+/* ******************************
+* Check data and return errors or continue to Update
+* ***************************** */
+validate.checkUpdAccData = async (req, res, next) => {
+  const { account_firstname, account_lastname, account_email } = req.body
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    res.render("account/update-account", {
+      errors,
+      title: "Edit Account",
+      nav,
+      account_firstname,
+      account_lastname,
+      account_email,
+      account_id,
+    })
+    return
+  }
+  next()
+}
+
+
+
+/* ******************************
+ * Check inventory data and return errors or continue to Management view
+ * ***************************** */
+validate.checkCommentData = async (req, res, next) => {
+  const { inv_id, comment_text, account_id } = req.body
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    const data = await invModel.getInventoryDetailById(inv_id)
+    const comment_data = await invModel.getCommentByInventoryId(inv_id)
+    console.log(comment_data)
+    const details = await utilities.buildVehicleDetail(data)
+    const comments = await utilities.buildCommentsSection(comment_data)
+    let nav = await utilities.getNav()
+    const vehicleYear = data[0].inv_year
+    const vehicleMake = data[0].inv_make
+    const vehicleModel = data[0].inv_model
+    const vehicleId = data[0].inv_id
+    res.render("./inventory/details", {
+      title: `${vehicleYear} ${vehicleMake} ${vehicleModel} Details`,
+      nav,
+      details,
+      invid: vehicleId,
+      comments,
+      errors,
+    })
+    return
+  }
+  next()
+}
+
+
+/*  **********************************
+  *  Add New Classification Rules
+  * ********************************* */
+validate.updateTypeRules = () => {
+  return [
+    // valid email is required and cannot already exist in the DB
+    body("account_id")
+    .trim()
+    .notEmpty()
+    .isInt()
+    .withMessage("The email is required."),
+    
+    // valid email is required and cannot already exist in the DB
+    body("account_type")
+    .trim()
+    .notEmpty()
+    .withMessage("The account type is required."),
+    ]
+  }
+  
+
+
+
+
+
+
+
+
+
+/* ******************************
+ * Check inventory data and return errors or continue to Management view
+ * ***************************** */
+validate.checkUpdateTypeData = async (req, res, next) => {
+  const { account_id } = req.body
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    const emailSelect = await utilities.buildEmailList(account_id)
+    res.render("account/update-type", {
+      title: "Update Account Type",
+      nav,
+      errors,
+      emaillist: emailSelect,
+    })
+    return
+  }
+  next()
+}
+
+validate.passwordRules = () =>{
+  return [
+      body("account_password")
+          .trim()
+          .notEmpty()
+          .isStrongPassword({
+              minLength: 12,
+              minLowercase: 1,
+              minUppercase: 1,
+              minNumbers: 1,
+              minSymbols: 1,
+          })
+          .withMessage("Password does not meet requirements"),
+  ]
+}
+
+validate.checkUpdatePassword = async (req, res, next) => {
+  // const { account_password } = req.body
+  let errors = []
+  errors = validationResult(req)
+  if(!errors.isEmpty()){
+      let nav = await utilities.getNav()
+      res.render("account/update-account", {
+          errors,
+          title: "Edit Account",
+          nav,
+      })
+      return
+  }
+  next()
+}
+
 
   module.exports = validate
