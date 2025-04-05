@@ -1,0 +1,29 @@
+<div class="container">
+    <% if (errors) { %>
+    <div class="alert alert-error">
+      <% errors.array().forEach(function(error) { %>
+      <p><%= error.msg %></p>
+      <% }) %>
+    </div>
+    <% } %>
+
+    <p class="delete">Confirm Deletion - The delete is permanent.</p>
+
+    <form action="/inv/delete/<%= inv_id %>" method="POST" class="inventory-form">
+      <label for="inv_make">Make</label>
+      <input type="text" name="inv_make" id="inv_make" readonly value="<%= inv_make %>">
+    
+      <label for="inv_model">Model</label>
+      <input type="text" name="inv_model" id="inv_model" readonly value="<%= inv_model %>">
+    
+      <label for="inv_year">Year</label>
+      <input type="number" name="inv_year" id="inv_year" readonly value="<%= inv_year %>">
+    
+      <label for="inv_price">Price</label>
+      <input type="number" name="inv_price" id="inv_price" step="0.01" readonly value="<%= inv_price %>">
+    
+      <!-- Hidden field to pass the inv_id -->
+      <input type="hidden" name="inv_id" value="<%= inv_id %>">
+    
+      <button type="submit">Delete</button>
+    </form>

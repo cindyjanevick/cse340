@@ -1,26 +1,31 @@
-// Needed Resources
 const express = require("express");
 const router = new express.Router();
 const invController = require("../controllers/invController");
 const utilities = require("../utilities");
 const validate = require("../utilities/account-validation");
 
-// Route to build inventory by classification view
+// Routes
+
+// GET route to build the inventory by classification view
 router.get("/type/:classificationId", invController.buildByClassificationId);
 
-// New route for Inventory Item Details (check later)
+// Routes for Inventory Item Details
+// GET route for showing inventory item details
 router.get("/detail/:invId", invController.buildByInvId);
 
-// New route to build Management view
+
+// GET new route to build the inventory management view
 router.get("/", utilities.handleErrors(invController.buildManagementView));
 
-// Show the form to add a classification
-router.get(
-  "/add-classification",
-  utilities.handleErrors(invController.buildAddClassification)
-);
 
-// Handle form submission
+// Routes for Adding Inventory and Classifications
+
+// Show the form to add a new classification
+router.get(
+  "/add-classification", 
+  utilities.handleErrors(invController.buildAddClassification));
+
+// Handle the form submission for adding a classification
 router.post(
   "/add-classification",
   validate.classificationRules(),
@@ -28,32 +33,45 @@ router.post(
   utilities.handleErrors(invController.addClassification)
 );
 
-// Show the form
+// Show the form to add a new inventory item
 router.get(
-    "/add-inventory",
-    utilities.handleErrors(invController.buildAddInventory)
-  )
-  
-  // Handle the form submission
-  router.post(
-    "/add-inventory",
-    validate.inventoryRules(),
-    validate.checkInventoryData,
-    utilities.handleErrors(invController.addInventory)
-  )
+  "/add-inventory",
+   utilities.handleErrors(invController.buildAddInventory));
 
-/* *********************************************
- * Get inventory for AJAX Route
- * Unit 5, Select inv item activity
- * ******************************************** */
-console.log("✅ invController.getInventoryJSON:", invController.getInventoryJSON)
+// Handle form submission for adding a new inventory item
+router.post(
+  "/add-inventory",  // Same route for both GET and POST for consistency
+  validate.inventoryRules(),
+  validate.checkInventoryData,
+  utilities.handleErrors(invController.addInventory)
+);
+
+// AJAX route to fetch inventory data by classification ID
 router.get(
   "/getInventory/:classification_id",
-  // utilities.checkAccountType,
   utilities.handleErrors(invController.getInventoryJSON)
+);
 
-)
 
+
+// Routes for Editing an Existing Inventory Item
+// GET route to show the form for editing an inventory item
+router.get("/edit/:invId", utilities.handleErrors(invController.buildEditInventoryView));
+
+// POST route to update an inventory item
+router.post(
+  "/edit-inventory",
+  validate.newInventoryRules(),
+  validate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+);
+
+// Routes for Deleting Inventory Items
+// GET route to show the delete confirmation view for an inventory item
+router.get("/delete/:invId", utilities.handleErrors(invController.buildDeleteConfirmationView));
+
+// POST route to handle the actual deletion of an inventory item
+router.post("/delete/:invId", utilities.handleErrors(invController.deleteInventoryItem));
 
 
 
