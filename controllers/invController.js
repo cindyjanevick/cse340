@@ -310,7 +310,7 @@ invCont.deleteInventoryItem = async function (req, res, next) {
   const deleteResult = await invModel.deleteInventoryItem(inv_id)
 
   if (deleteResult) {
-    req.flash("notice", "The inventory item was successfully deleted.")
+    req.flash("notice", "The deletion was succesful.")
     res.redirect("/inv/")
   } else {
     const itemData = await invModel.getInventoryItemById(inv_id)
