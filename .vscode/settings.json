@@ -22,9 +22,9 @@
             "server": "localhost",
             "driver": "PostgreSQL",
             "name": "Render.com",
-            "database": "cse340db2_54u9",
-            "username": "cse340db2",
-            "connectString": "postgresql://cse340db2:uqVx0KH96XVrAhVKJc7ZLGqzlR5Rr1ri@dpg-cv9hfiggph6c73e8r7vg-a.singapore-postgres.render.com/cse340db2_54u9"
+            "database": "cse340db3_y5q2",
+            "username": "cse340db3_y5q2_user",
+            "connectString": "postgresql://cse340db3_y5q2_user:QxVT16IIsQJ35q5Ji6UVKExr4SI9Blek@dpg-cvtdqsruibrs73dj29g0-a.singapore-postgres.render.com/cse340db3_y5q2"
         }
     ],
     "launch": {
