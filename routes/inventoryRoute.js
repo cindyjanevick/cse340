@@ -15,7 +15,12 @@ router.get("/detail/:invId", invController.buildByInvId);
 
 
 // GET new route to build the inventory management view
-router.get("/", utilities.handleErrors(invController.buildManagementView));
+router.get(
+  "/", 
+  utilities.checkLogin, // Checks if the user is logged in
+  utilities.adminType, // Checks if user is not a "Client"
+  utilities.handleErrors(invController.buildManagementView)
+);
 
 
 // Routes for Adding Inventory and Classifications
