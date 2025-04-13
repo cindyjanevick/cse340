@@ -1,1 +1,58 @@
 <%- details %>
+
+<section class="reviews">
+    <h2>Customer Reviews</h2>
+    <% if (reviews && reviews.length > 0) { %>
+      <ul>
+        <% reviews.forEach(function(review) { %>
+          <li>
+            <strong>Rating:</strong> <%= review.rating %>/5<br>
+            <%= review.review_text %><br>
+            <em>Posted on <%= new Date(review.created_at).toLocaleDateString() %></em>
+          </li>
+        <% }); %>
+      </ul>
+    <% } else { %>
+      <p>No reviews yet. Be the first to write one!</p>
+    <% } %>
+  </section>
+  <section class="review-form">
+    <h3>Leave a Review</h3>
+    <% if (locals.accountData) { %>
+        <form action="/reviews/add/<%= item.inv_id %>" method="POST">
+
+        <input type="hidden" name="inv_id" value="<%= item.inv_id %>">
+        
+        <label for="rating">Rating (1 to 5):</label>
+        <div class="rating-container">
+          <!-- Dropdown for selecting the rating, no stars inside -->
+          <select name="rating" id="rating" required onchange="updateStarRating()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <!-- Display the stars corresponding to the rating -->
+          <div id="star-display">
+            <span id="star-count">0</span> 
+            <span id="stars"></span> <!-- Star icons will appear here -->
+          </div>
+        </div>
+  
+        <label for="review_text">Your Review:</label>
+        <textarea name="review_text" id="review_text" required></textarea>
+  
+        <button type="submit">Submit Review</button>
+      </form>
+    <% } else { %>
+      <p><a href="/account/login">Log in</a> to leave a review.</p>
+    <% } %>
+  </section>
+  
+  
+  
+  
+  <!-- Link to the external JS file -->
+  <script src="../../js/reviews.js"></script>
+  

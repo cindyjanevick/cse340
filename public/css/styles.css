@@ -372,6 +372,26 @@ p.fun-message {
 }
 /* VEHICLE DETAIL PAGE STYLING */
 
+/* Ensure the image container is responsive */
+
+
+/* Optional: Add some padding or margin for smaller screens */
+@media (max-width: 768px) {
+  .vehicle-detail img {
+    width: 100%;    /* Ensure it scales correctly */
+    height: auto;   /* Keep the aspect ratio intact */
+  }
+}
+
+/* For even smaller screens, you can limit the width if needed */
+@media (max-width: 480px) {
+  .vehicle-detail img {
+    width: 100%;    /* Full width for smaller screens */
+  }
+}
+
+
+
 /* Section wrapper for the vehicle detail */
 .car-listing {
   display: flex;
@@ -1109,4 +1129,94 @@ input[type="number"]::-webkit-inner-spin-button {
 .management-container .alert-success p,
 .management-container .alert-error p {
   margin: 0;
+}
+
+/* reviews*/
+/* Style the review form container */
+.review-form {
+  width: 70%; /* Adjust width to make it less wide */
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the rating container */
+.rating-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align to the left */
+  gap: 10px; /* Add space between dropdown and stars */
+}
+
+/* Style the rating dropdown */
+#rating {
+  padding: 5px;
+  font-size: 16px;
+  width: 60px; /* Make the dropdown less wide */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Style the star display */
+#star-display {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Style the stars */
+#stars {
+  font-size: 24px;
+  color: gold;
+}
+
+/* Style the review text box */
+#review_text {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Style the submit button */
+button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: navy;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the submit button */
+button[type="submit"]:hover {
+  background-color: #4f9d74;
+}
+
+/* Style the "Log in" message */
+p a {
+  color: #76c7a1;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+/* Review form's textarea */
+.review-form textarea {
+  width: 100%;
+  height: 150px; /* Or adjust height as you like */
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical; /* Optional: allows the user to resize it vertically */
 }
