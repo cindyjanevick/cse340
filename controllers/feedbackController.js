@@ -1,11 +1,7 @@
 const feedbackModel = require('../models/feedback-model');
 const { validationResult } = require('express-validator');
 const utilities = require("../utilities/")
-/**
- * Renders the feedback form view.
- * @param {Object} req - The request object.
- * @param {Object} res - The response object.
- */
+
 const showFeedbackForm = async (req, res) => {
     const accountData = res.locals.accountData || {};
     const nav = await Util.getNav();
@@ -28,11 +24,7 @@ const showFeedbackForm = async (req, res) => {
     });
 };
 
-/**
- * Handles feedback submission.
- * @param {Object} req - The request object.
- * @param {Object} res - The response object.
- */
+
 const submitFeedback = async (req, res) => {
     const errors = validationResult(req);
     const { customer_name, email, message } = req.body;
@@ -72,11 +64,7 @@ const submitFeedback = async (req, res) => {
     }
 };
 
-/**
- * Renders the admin view with all feedback.
- * @param {Object} req - The request object.
- * @param {Object} res - The response object.
- */
+
 const viewFeedback = async (req, res) => {
     try {
         const nav = await utilities.getNav();
