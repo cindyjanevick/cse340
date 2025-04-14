@@ -1,22 +1,27 @@
 
-    <title><%= title %></title>
 
-<body>
-    <h1>Customer Feedbacks</h1>
-    <table>
+
+
+<h1>Customer Feedbacks</h1>
+<table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Date Submitted</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% feedbacks.forEach(feedback => { %>
         <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Message</th>
-            <th>Date Submitted</th>
+          <td><%= feedback.customer_name %></td>
+          <td><%= feedback.email %></td>
+          <td><%= feedback.message %></td>
+          <td><%= new Date(feedback.created_at).toLocaleString() %></td>
         </tr>
-        <% feedbacks.forEach(feedback => { %>
-            <tr>
-                <td><%= feedback.customer_name %></td>
-                <td><%= feedback.email %></td>
-                <td><%= feedback.message %></td>
-                <td><%= feedback.created_at.toLocaleString() %></td>
-            </tr>
-        <% }) %>
-    </table>
-
+      <% }); %>
+    </tbody>
+  </table>
+  
+  

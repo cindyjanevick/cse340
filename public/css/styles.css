@@ -1161,3 +1161,47 @@ input[type="number"]::-webkit-inner-spin-button {
   background-color: #3367d6;
 }
 
+/*Customer Feedback */
+h1 {
+  text-align: center;
+  margin-top: 2rem;
+  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+table {
+  width: 90%;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #4a90e2;
+  color: #fff;
+}
+
+thead th {
+  padding: 1rem;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+tbody td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f2f9ff;
+  transition: background 0.2s ease-in-out;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}

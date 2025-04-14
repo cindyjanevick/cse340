@@ -1,7 +1,6 @@
 const feedbackModel = require('../models/feedback-model');
 const { validationResult } = require('express-validator');
-const Util = require('../utilities'); // For example, getNav()
-
+const utilities = require("../utilities/")
 /**
  * Renders the feedback form view.
  * @param {Object} req - The request object.
@@ -80,9 +79,17 @@ const submitFeedback = async (req, res) => {
  */
 const viewFeedback = async (req, res) => {
     try {
+        const nav = await utilities.getNav();
         const feedbacks = await feedbackModel.getAllFeedback();
         console.log('Feedbacks:', feedbacks); // Log feedback data to verify
-        res.render('admin/feedbacks', { title: 'Feedbacks', feedbacks });
+        res.render('admin/feedbacks', {
+             title: 'Feedbacks',
+             
+             nav,
+             feedbacks,
+
+        });
+           
     } catch (error) {
         console.error("Error fetching feedbacks:", error);  // Log the error
         req.flash('error', 'Unable to retrieve feedbacks.');

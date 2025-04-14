@@ -26,5 +26,10 @@
   <% if (locals.accountData.account_type === "Admin") { %>
     <h3>Account Type Management</h3>
     <a href="/account/accounttype">Edit Accounts Type</a>
+
+    <!-- Add Feedbacks link only for Admin -->
+    <h3>Feedbacks Management</h3>
+    <a href="/admin/feedbacks">View Feedbacks</a>
   <% } %>
 </div>
+
