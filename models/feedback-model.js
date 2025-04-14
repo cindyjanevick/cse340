@@ -29,7 +29,7 @@ async function addFeedback(feedback) {
 async function getAllFeedback() {
     const query = 'SELECT * FROM feedback ORDER BY created_at DESC';
     try {
-        const result = await database.query(query);
+        const result = await pool.query(query);
         return result.rows;
     } catch (error) {
         throw new Error('Unable to retrieve feedback: ' + error.message);

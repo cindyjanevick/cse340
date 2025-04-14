@@ -290,6 +290,7 @@ Util.accountType = (req, res, next) => {
  **************************/
 Util.adminType = (req, res, next) => {
   if (res.locals.accountData) {
+    console.log("Account Type:", res.locals.accountData.account_type);  // Add this log
     if (res.locals.accountData.account_type == "Admin") {
       next();
     } else {

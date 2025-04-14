@@ -1,21 +1,23 @@
 const express = require('express');
-const { body } = require('express-validator');
+const { feedbackRules, checkFeedbackData } = require('../utilities/feedback-validation');
 const feedbackController = require('../controllers/feedbackController');
-const utilities = require('../utilities');  // Assuming you have a utility for checking login status
+const utilities = require('../utilities');  // This is your utility import for checkLogin
 
 const router = express.Router();
 
-// Route to show the feedback form (only accessible if the user is logged in)
+// Only logged-in users can access the feedback page
 router.get('/feedback', utilities.checkLogin, feedbackController.showFeedbackForm);
 
-// Route for submitting feedback (only accessible if the user is logged in)
-router.post('/feedback', [
-    body('customer_name').notEmpty().withMessage('Name is required.'),
-    body('email').isEmail().withMessage('Invalid email.'),
-    body('message').notEmpty().withMessage('Message is required.')
-], feedbackController.submitFeedback);
+// POST route for feedback submission with validation and error handling
+router.post('/feedback',
+  utilities.checkLogin,         // Ensure user is logged in
+  feedbackRules(),              // Apply validation rules
+  checkFeedbackData,            // Handle validation errors
+  feedbackController.submitFeedback  // Submit feedback if validation passes
+);
 
-// Route for admin to view all feedback (admin only)
-router.get('/admin/feedbacks', feedbackController.viewFeedback);
+// Admin route to view all feedbacks
+router.get('/admin/feedbacks', utilities.checkLogin, feedbackController.viewFeedback);
 
 module.exports = router;
+

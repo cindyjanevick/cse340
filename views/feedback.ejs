@@ -8,12 +8,14 @@
         </ul>
     <% } %>
     
-    <% if (flash.success) { %>
-        <p><%= flash.success %></p>
+    <% if (flash.success && flash.success.length) { %>
+        <p class="success"><%= flash.success[0] %></p>
     <% } %>
-    <% if (flash.error) { %>
-        <p><%= flash.error %></p>
+    
+    <% if (flash.error && flash.error.length) { %>
+        <p class="error"><%= flash.error[0] %></p>
     <% } %>
+    
     <form method="post" action="/feedback">
         <label for="customer_name">Name:</label>
         <input type="text" name="customer_name" id="customer_name" value="<%= customer_name %>" required readonly>
@@ -22,7 +24,9 @@
         <input type="email" name="email" id="email" value="<%= email %>" required readonly>
     
         <label for="message">Message:</label>
-        <textarea name="message" id="message" required></textarea>
+        <textarea name="message" id="message" required><%= typeof message !== 'undefined' ? message : '' %></textarea>
+
+
     
         <input type="submit" value="Send Feedback">
     </form>
