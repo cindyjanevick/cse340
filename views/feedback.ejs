@@ -1,0 +1,29 @@
+
+    <h1>Customer Feedback</h1>
+    <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+        <ul>
+            <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+    
+    <% if (flash.success) { %>
+        <p><%= flash.success %></p>
+    <% } %>
+    <% if (flash.error) { %>
+        <p><%= flash.error %></p>
+    <% } %>
+    <form method="post" action="/feedback">
+        <label for="customer_name">Name:</label>
+        <input type="text" name="customer_name" id="customer_name" value="<%= customer_name %>" required readonly>
+    
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" value="<%= email %>" required readonly>
+    
+        <label for="message">Message:</label>
+        <textarea name="message" id="message" required></textarea>
+    
+        <input type="submit" value="Send Feedback">
+    </form>
+    

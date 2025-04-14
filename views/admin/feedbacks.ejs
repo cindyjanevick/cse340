@@ -1,0 +1,22 @@
+
+    <title><%= title %></title>
+
+<body>
+    <h1>Customer Feedbacks</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Date Submitted</th>
+        </tr>
+        <% feedbacks.forEach(feedback => { %>
+            <tr>
+                <td><%= feedback.customer_name %></td>
+                <td><%= feedback.email %></td>
+                <td><%= feedback.message %></td>
+                <td><%= feedback.created_at.toLocaleString() %></td>
+            </tr>
+        <% }) %>
+    </table>
+

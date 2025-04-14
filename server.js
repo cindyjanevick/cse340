@@ -20,7 +20,7 @@ const utilities = require("./utilities/")
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
-
+const feedbackRoute = require("./routes/feedbackRoute")
 /* ***********************
  * Middleware
  * ************************/
@@ -81,7 +81,8 @@ console.log(accountRoute);
 //Account route
 app.use("/account", accountRoute);
 
-
+// feedback Route
+app.use(feedbackRoute);
 // Intentional 500 Error Route for Testing
 // app.use("/ierror", intentionalErrorRoute);
 
