@@ -35,16 +35,15 @@ async function getAllFeedback() {
     }
 }
 
-async function deleteFeedbackById(id) {
-    const query = 'DELETE FROM feedback WHERE feedback_id = $1';
+async function deleteFeedbackById(feedbackId) {
     try {
-      const result = await pool.query(query, [feedback_id]);
-      return result;
+      const sql = 'DELETE FROM feedback WHERE feedback_id = $1';
+      const result = await pool.query(sql, [feedbackId]);
+      return result.rowCount > 0;
     } catch (error) {
-      throw new Error('Unable to delete feedback: ' + error.message);
+      throw error;
     }
   }
-  
   
 
 module.exports = { addFeedback, getAllFeedback,deleteFeedbackById };

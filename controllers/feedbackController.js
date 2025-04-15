@@ -75,7 +75,10 @@ const viewFeedback = async (req, res) => {
              
              nav,
              feedbacks,
-
+             flash: {
+                success: req.flash('success'),
+                error: req.flash('error')
+             }
         });
            
     } catch (error) {
@@ -87,22 +90,27 @@ const viewFeedback = async (req, res) => {
 
 
 
-async function deleteFeedbackById(id) {
-    const query = 'DELETE FROM feedback WHERE feedback_id = $1 RETURNING *'; // Make sure the column is feedback_id
-    try {
-        const result = await pool.query(query, [id]);
-        if (result.rowCount === 0) {
-            throw new Error('Feedback not found or already deleted.');
-        }
-        return result;
-    } catch (error) {
-        console.error('Database error:', error.stack); // Capture the error stack to see where the issue is
-        throw new Error('Unable to delete feedback: ' + error.message);
+async function deleteFeedback(req, res) {
+    
+  const feedbackId = req.params.id;
+  try {
+    const success = await feedbackModel.deleteFeedbackById(feedbackId);
+    if (success) {
+      req.flash("success", "Feedback deleted successfully.");
+    } else {
+      req.flash("error", "Failed to delete feedback.");
     }
+    res.redirect("/admin/feedbacks");
+  } catch (error) {
+    console.error("Error deleting feedback:", error);
+    req.flash("error", "An error occurred.");
+    res.redirect("/admin/feedbacks");
+  }
 }
+  
 
 
 
 
   
-  module.exports = { showFeedbackForm, submitFeedback, viewFeedback, deleteFeedbackById };
+  module.exports = { showFeedbackForm, submitFeedback, viewFeedback, deleteFeedback };

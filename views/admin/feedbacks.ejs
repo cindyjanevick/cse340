@@ -1,4 +1,16 @@
 <h1>Customer Feedbacks</h1>
+<% if (flash.success && flash.success.length > 0) { %>
+    <div class="flash success"><%= flash.success %></div>
+  <% } %>
+  <% if (flash.error && flash.error.length > 0) { %>
+    <div class="flash error"><%= flash.error %></div>
+  <% } %>
+  
+
+
+
+
+
 <table>
     <thead>
       <tr>

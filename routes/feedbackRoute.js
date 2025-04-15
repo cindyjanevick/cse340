@@ -19,6 +19,14 @@ router.post('/feedback',
 // ✅ Admin-only route to view all feedbacks
 router.get('/feedbacks', utilities.checkLogin, utilities.adminType, feedbackController.viewFeedback);
 
+// admin delete
 
+router.post(
+    '/feedbacks/delete/:id',
+    utilities.checkLogin,
+    utilities.adminType,
+    feedbackController.deleteFeedback
+  );
+  
 module.exports = router;
 
