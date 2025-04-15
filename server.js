@@ -82,7 +82,7 @@ console.log(accountRoute);
 app.use("/account", accountRoute);
 
 // feedback Route
-app.use(feedbackRoute);
+app.use('/admin',feedbackRoute);
 // Intentional 500 Error Route for Testing
 // app.use("/ierror", intentionalErrorRoute);
 

@@ -85,4 +85,24 @@ const viewFeedback = async (req, res) => {
     }
 };
 
-module.exports = { showFeedbackForm, submitFeedback, viewFeedback };
+
+
+async function deleteFeedbackById(id) {
+    const query = 'DELETE FROM feedback WHERE feedback_id = $1 RETURNING *'; // Make sure the column is feedback_id
+    try {
+        const result = await pool.query(query, [id]);
+        if (result.rowCount === 0) {
+            throw new Error('Feedback not found or already deleted.');
+        }
+        return result;
+    } catch (error) {
+        console.error('Database error:', error.stack); // Capture the error stack to see where the issue is
+        throw new Error('Unable to delete feedback: ' + error.message);
+    }
+}
+
+
+
+
+  
+  module.exports = { showFeedbackForm, submitFeedback, viewFeedback, deleteFeedbackById };

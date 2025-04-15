@@ -16,8 +16,9 @@ router.post('/feedback',
   feedbackController.submitFeedback  // Submit feedback if validation passes
 );
 
-// Admin route to view all feedbacks
-router.get('/admin/feedbacks', utilities.checkLogin, feedbackController.viewFeedback);
+// ✅ Admin-only route to view all feedbacks
+router.get('/feedbacks', utilities.checkLogin, utilities.adminType, feedbackController.viewFeedback);
+
 
 module.exports = router;
 
