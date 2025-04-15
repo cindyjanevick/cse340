@@ -3,26 +3,34 @@ const { validationResult } = require('express-validator');
 const utilities = require("../utilities/")
 
 const showFeedbackForm = async (req, res) => {
-    const accountData = res.locals.accountData || {};
-    const nav = await Util.getNav();
-    
-    // Directly pass success/error messages to the view
-    const successMessage = req.flash('success');
-    const errorMessage = req.flash('error');
-
-    res.render('feedback', {
-      title: 'Customer Feedback',
-      nav,
-      errors: [],
-      customer_name: `${accountData.account_firstname || ''} ${accountData.account_lastname || ''}`.trim(),
-      email: accountData.account_email || '',
-      message: '', // Initial empty message
-      flash: {
-        success: successMessage,
-        error: errorMessage
-      }
-    });
-};
+    console.log('Feedback form route hit');  // Debug log
+    try {
+      const accountData = res.locals.accountData || {};
+      const nav = await utilities.getNav();
+  
+      // Directly pass success/error messages to the view
+      const successMessage = req.flash('success');
+      const errorMessage = req.flash('error');
+  
+      res.render('feedback', {  // Make sure your view is 'feedback.ejs'
+        title: 'Customer Feedback',
+        nav,
+        errors: [],
+        customer_name: `${accountData.account_firstname || ''} ${accountData.account_lastname || ''}`.trim(),
+        email: accountData.account_email || '',
+        message: '', // Initial empty message
+        flash: {
+          success: successMessage,
+          error: errorMessage
+        }
+      });
+    } catch (error) {
+      console.error("Error rendering feedback form:", error);
+      req.flash('error', 'Error displaying feedback form.');
+      res.redirect('/');
+    }
+  };
+  
 
 
 const submitFeedback = async (req, res) => {

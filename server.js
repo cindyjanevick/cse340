@@ -81,8 +81,14 @@ console.log(accountRoute);
 //Account route
 app.use("/account", accountRoute);
 
+
+
+// Feedback route (general form)
+app.use(feedbackRoute);
+
 // feedback Route
 app.use('/admin',feedbackRoute);
+
 // Intentional 500 Error Route for Testing
 // app.use("/ierror", intentionalErrorRoute);
 
